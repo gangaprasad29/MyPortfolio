@@ -1,0 +1,16 @@
+{
+  "name": "myportfolio-monorepo",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "concurrently \"cd server && npm run dev\" \"cd client && npm run dev\"",
+    "start:server": "cd server && npm run dev",
+    "start:client": "cd client && npm run dev",
+    "build": "cd client && npm install && npm run build",
+    "postinstall": "cd client && npm install && cd server && npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}
