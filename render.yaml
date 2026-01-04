@@ -15,6 +15,5 @@ services:
     branch: main
     plan: free
     region: oregon
-    buildCommand: npm install && npm run build
-    publishPath: dist
-    root: client
+    buildCommand: cd client && npm install && npm run build
+    publishPath: client/dist
