@@ -5,8 +5,8 @@ services:
     branch: main
     plan: free
     region: oregon
-    buildCommand: cd server && npm install
-    startCommand: cd server && npm run start
+    buildCommand: npm install
+    startCommand: npm run start
     root: server
 
   - type: static
@@ -15,6 +15,6 @@ services:
     branch: main
     plan: free
     region: oregon
-    buildCommand: cd client && npm install && npm run build
-    publishPath: client/dist
+    buildCommand: npm install && npm run build
+    publishPath: dist
     root: client
