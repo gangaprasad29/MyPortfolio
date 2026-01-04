@@ -5,9 +5,8 @@ services:
     branch: main
     plan: free
     region: oregon
-    buildCommand: npm install
-    startCommand: npm start
-    root: server
+    buildCommand: cd server && npm install
+    startCommand: cd server && npm start
 
   - type: static
     name: portfolio-frontend
