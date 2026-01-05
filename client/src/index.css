@@ -24,6 +24,7 @@ body {
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -37,6 +38,21 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, #7c3aed 0%, #2563eb 100%);
+}
+
+/* Horizontal scrollbar for carousel */
+.scrollbar-thin::-webkit-scrollbar {
+  height: 6px;
+}
+
+.scrollbar-thumb-primary-500::-webkit-scrollbar-thumb {
+  background: #8b5cf6;
+  border-radius: 3px;
+}
+
+.scrollbar-track-dark-700::-webkit-scrollbar-track {
+  background: #374151;
+  border-radius: 3px;
 }
 
 /* Selection */

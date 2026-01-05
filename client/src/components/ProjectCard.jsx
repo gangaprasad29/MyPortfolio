@@ -164,37 +164,25 @@ const ProjectCard = ({ project }) => {
               </button>
               
               <div className="w-full">
-                {/* Main image / carousel */}
-                <div className="relative">
-                  <img
-                    src={
-                      project.screenshots && project.screenshots.length
-                        ? project.screenshots[modalIndex]
-                        : project.image
-                    }
-                    alt={`${project.title} screenshot ${modalIndex + 1}`}
-                    className="w-full aspect-video object-cover rounded-t-md"
-                  />
-
-                  {/* Prev/Next */}
-                  {(project.screenshots && project.screenshots.length > 1) && (
-                    <>
-                      <button
-                        onClick={(e) => { e.stopPropagation(); setModalIndex((modalIndex - 1 + project.screenshots.length) % project.screenshots.length); }}
-                        className="absolute left-3 top-1/2 -translate-y-1/2 bg-dark-800/60 p-2 rounded-full text-white"
-                        aria-label="Previous screenshot"
-                      >
-                        ‹
-                      </button>
-                      <button
-                        onClick={(e) => { e.stopPropagation(); setModalIndex((modalIndex + 1) % project.screenshots.length); }}
-                        className="absolute right-3 top-1/2 -translate-y-1/2 bg-dark-800/60 p-2 rounded-full text-white"
-                        aria-label="Next screenshot"
-                      >
-                        ›
-                      </button>
-                    </>
-                  )}
+                {/* Horizontal scrolling image carousel */}
+                <div className="relative bg-dark-900">
+                  <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-primary-500 scrollbar-track-dark-700">
+                    <div className="flex gap-2 p-4">
+                      {(project.screenshots && project.screenshots.length > 0 ? project.screenshots : [project.image]).map((screenshot, idx) => (
+                        <div
+                          key={idx}
+                          className="flex-shrink-0 rounded-lg overflow-hidden border-2 border-dark-700 hover:border-primary-500/50 transition-colors bg-dark-800"
+                          style={{ width: 'auto', maxWidth: '90vw' }}
+                        >
+                          <img
+                            src={screenshot}
+                            alt={`${project.title} screenshot ${idx + 1}`}
+                            className="h-[400px] w-auto object-contain"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
 
                 <div className="p-6">
@@ -203,21 +191,6 @@ const ProjectCard = ({ project }) => {
                   </h3>
 
                   <p className="text-dark-300 mb-6">{project.longDescription || project.description}</p>
-
-                  {/* Screenshots thumbnails */}
-                  {project.screenshots && project.screenshots.length > 0 && (
-                    <div className="flex gap-2 mb-6 overflow-x-auto">
-                      {project.screenshots.map((src, i) => (
-                        <img
-                          key={i}
-                          src={src}
-                          alt={`${project.title} thumb ${i + 1}`}
-                          className={`w-24 h-12 object-cover rounded-md border-2 cursor-pointer ${i === modalIndex ? 'border-primary-500' : 'border-transparent'}`}
-                          onClick={(e) => { e.stopPropagation(); setModalIndex(i); }}
-                        />
-                      ))}
-                    </div>
-                  )}
 
                   {/* Technologies */}
                   <div className="flex flex-wrap gap-2 mb-6">
