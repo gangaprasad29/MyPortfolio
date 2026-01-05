@@ -98,8 +98,8 @@ const Hero = () => {
               className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start"
             >
               <motion.a
-                href="/resume.pdf"
-                download="resume.pdf"
+                href="/Resume _G.pdf"
+                download="Resume_G.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-center gap-2 px-8 py-4 text-base font-semibold text-white bg-gradient-to-r from-primary-600 to-blue-600 rounded-xl hover:from-primary-500 hover:to-blue-500 transition-all duration-300 shadow-lg shadow-primary-500/25"

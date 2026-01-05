@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FiGithub, FiLinkedin, FiTwitter, FiMail, FiHeart } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiMail, FiHeart, FiCode } from 'react-icons/fi';
 import { iconHover } from '../animations/variants';
 
 const socialLinks = [
@@ -16,10 +16,10 @@ const socialLinks = [
     label: 'LinkedIn',
   },
   {
-    id: 'twitter',
-    icon: FiTwitter,
-    url: 'https://twitter.com/gangaprasad',
-    label: 'Twitter',
+    id: 'leetcode',
+    icon: FiCode,
+    url: 'https://leetcode.com/u/gangaprasad29',
+    label: 'LeetCode',
   },
   {
     id: 'email',

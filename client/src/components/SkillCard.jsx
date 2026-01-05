@@ -4,7 +4,7 @@ import { skillCardVariants } from '../animations/variants';
 const SkillCard = ({ skill, index }) => {
   return (
     <motion.div
-      className="group relative p-6 bg-dark-800/50 rounded-xl border border-dark-700/50 hover:border-primary-500/30 transition-all duration-300"
+      className="group relative p-3 sm:p-4 md:p-6 bg-dark-800/50 rounded-xl border border-dark-700/50 hover:border-primary-500/30 transition-all duration-300"
       variants={skillCardVariants}
       initial="hidden"
       whileInView="visible"
@@ -21,25 +21,25 @@ const SkillCard = ({ skill, index }) => {
         }}
       />
 
-      <div className="relative z-10 flex items-center gap-4">
+      <div className="relative z-10 flex items-center gap-2 sm:gap-3 md:gap-4">
         {/* Icon */}
         <div
-          className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-lg transition-transform duration-300 group-hover:scale-110"
+          className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-lg transition-transform duration-300 group-hover:scale-110"
           style={{ backgroundColor: `${skill.color}15` }}
         >
           <skill.icon
-            className="w-6 h-6"
+            className="w-5 h-5 sm:w-6 sm:h-6"
             style={{ color: skill.color }}
           />
         </div>
 
         {/* Text */}
-        <div>
-          <h3 className="text-base font-semibold text-white group-hover:text-primary-300 transition-colors">
+        <div className="min-w-0 flex-1">
+          <h3 className="text-sm sm:text-base font-semibold text-white group-hover:text-primary-300 transition-colors truncate">
             {skill.name}
           </h3>
           {skill.category && (
-            <p className="text-xs text-dark-400">{skill.category}</p>
+            <p className="text-xs text-dark-400 truncate">{skill.category}</p>
           )}
         </div>
       </div>
