@@ -12,12 +12,29 @@ const aboutData = {
     I'm particularly interested in creating scalable architectures, optimizing performance, and 
     implementing clean, maintainable code that stands the test of time.`,
   
-  education: {
-    degree: 'B.Tech in Computer Science & Engineering',
-    university: 'Government College of Engineering , Chhatrapati Sambhaji Nagar',
-    year: '2023 - 2027',
-    cgpa: '8.7 CGPA',
-  },
+  education: [
+    {
+      qualification: 'B.Tech in Computer Science & Engineering',
+      institution: 'Government College of Engineering, Chhatrapati Sambhajinagar',
+      year: '2023 - 2027',
+      grade: '8.7 CGPA',
+      description: 'Currently pursuing my final year of Computer Science Engineering.'
+    },
+    {
+      qualification: 'HSC (XII), Science',
+      institution: 'Post Basic Jr College, Marwali Tanda',
+      year: '2021 - 2023',
+      grade: '76.67%',
+      description: 'Completed class 12 education with a focus on Science and Computer Application.'
+    },
+    {
+      qualification: 'SSC (X)',
+      institution: 'R.C.S Sainiki Vidyalaya, Sagroli',
+      year: '2017 - 2021',
+      grade: '89.20%',
+      description: 'Completed class 10 education, studying Science with Computer Application.'
+    }
+  ],
   
   goals: [
     'Secure a software engineering role at a product-based company',
@@ -35,85 +52,104 @@ const About = () => {
       subtitle="Get to know me"
       centered={true}
     >
-      <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-        {/* Left Column - Main Content */}
-        <motion.div
-          variants={fadeInLeft}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="space-y-6"
-        >
-          {/* Intro Card */}
-          <div className="p-6 bg-dark-800/50 rounded-2xl border border-dark-700/50">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-primary-500/10">
-                <FiCode className="w-5 h-5 text-primary-400" />
+      <div className="space-y-12">
+        {/* Top Row - Main Content Cards */}
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          {/* Left Column - Main Content */}
+          <motion.div
+            variants={fadeInLeft}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="space-y-6"
+          >
+            {/* Intro Card */}
+            <div className="p-6 bg-dark-800/50 rounded-2xl border border-dark-700/50">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-primary-500/10">
+                  <FiCode className="w-5 h-5 text-primary-400" />
+                </div>
+                <h3 className="text-lg font-semibold text-white">Who I Am</h3>
               </div>
-              <h3 className="text-lg font-semibold text-white">Who I Am</h3>
+              <p className="text-dark-300 leading-relaxed">{aboutData.intro}</p>
             </div>
-            <p className="text-dark-300 leading-relaxed">{aboutData.intro}</p>
-          </div>
 
-          {/* Focus Card */}
-          <div className="p-6 bg-dark-800/50 rounded-2xl border border-dark-700/50">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-blue-500/10">
-                <FiTarget className="w-5 h-5 text-blue-400" />
+            {/* Focus Card */}
+            <div className="p-6 bg-dark-800/50 rounded-2xl border border-dark-700/50">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-blue-500/10">
+                  <FiTarget className="w-5 h-5 text-blue-400" />
+                </div>
+                <h3 className="text-lg font-semibold text-white">My Focus</h3>
               </div>
-              <h3 className="text-lg font-semibold text-white">My Focus</h3>
+              <p className="text-dark-300 leading-relaxed">{aboutData.focus}</p>
             </div>
-            <p className="text-dark-300 leading-relaxed">{aboutData.focus}</p>
-          </div>
 
-          {/* Location */}
-          <div className="flex items-center gap-3 p-4 bg-dark-800/30 rounded-xl">
-            <FiMapPin className="w-5 h-5 text-primary-400" />
-            <span className="text-dark-300">Based in Chhatrapati Sambhaji Nagar, India</span>
-            <span className="ml-auto px-3 py-1 text-xs font-medium text-green-400 bg-green-500/10 rounded-full">
-              Open to opportunities
-            </span>
-          </div>
-        </motion.div>
+            {/* Location */}
+            <div className="flex items-center gap-3 p-4 bg-dark-800/30 rounded-xl">
+              <FiMapPin className="w-5 h-5 text-primary-400" />
+              <span className="text-dark-300">Based in Chhatrapati Sambhaji Nagar, India</span>
+              <span className="ml-auto px-3 py-1 text-xs font-medium text-green-400 bg-green-500/10 rounded-full">
+                Open to opportunities
+              </span>
+            </div>
+          </motion.div>
 
-        {/* Right Column - Education & Goals */}
+          {/* Right Column - Education */}
+          <motion.div
+            variants={fadeInRight}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="space-y-6"
+          >
+            {/* Education Card */}
+            <div className="p-6 bg-gradient-to-br from-primary-500/10 to-blue-500/10 rounded-2xl border border-primary-500/20">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-primary-500/20">
+                  <FiBook className="w-5 h-5 text-primary-400" />
+                </div>
+                <h3 className="text-lg font-semibold text-white">Education</h3>
+              </div>
+              
+              <div className="space-y-6">
+                {aboutData.education.map((edu, index) => (
+                  <div key={index} className="space-y-2 pb-6 border-b border-dark-700/50 last:border-b-0 last:pb-0">
+                    <h4 className="text-lg font-bold text-white">
+                      {edu.qualification}
+                    </h4>
+                    <p className="text-primary-400 font-medium text-sm">
+                      {edu.institution}
+                    </p>
+                    <div className="flex items-center gap-3 flex-wrap">
+                      <span className="px-3 py-1 text-xs text-dark-300 bg-dark-800 rounded-full">
+                        {edu.year}
+                      </span>
+                      <span className="px-3 py-1 text-xs text-primary-300 bg-primary-500/10 rounded-full">
+                        {edu.grade}
+                      </span>
+                    </div>
+                    <p className="text-dark-400 text-sm leading-relaxed">
+                      {edu.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Bottom Row - Career Goals Centered */}
         <motion.div
           variants={fadeInRight}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="space-y-6"
+          className="max-w-3xl mx-auto"
         >
-          {/* Education Card */}
-          <div className="p-6 bg-gradient-to-br from-primary-500/10 to-blue-500/10 rounded-2xl border border-primary-500/20">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-primary-500/20">
-                <FiBook className="w-5 h-5 text-primary-400" />
-              </div>
-              <h3 className="text-lg font-semibold text-white">Education</h3>
-            </div>
-            
-            <div className="space-y-3">
-              <h4 className="text-xl font-bold text-white">
-                {aboutData.education.degree}
-              </h4>
-              <p className="text-primary-400 font-medium">
-                {aboutData.education.university}
-              </p>
-              <div className="flex items-center gap-4">
-                <span className="px-3 py-1 text-sm text-dark-300 bg-dark-800 rounded-full">
-                  {aboutData.education.year}
-                </span>
-                <span className="px-3 py-1 text-sm text-primary-300 bg-primary-500/10 rounded-full">
-                  {aboutData.education.cgpa}
-                </span>
-              </div>
-            </div>
-          </div>
-
           {/* Goals Card */}
           <div className="p-6 bg-dark-800/50 rounded-2xl border border-dark-700/50">
-            <div className="flex items-center gap-3 mb-4">
+            <div className="flex items-center gap-3 mb-4 justify-center">
               <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-green-500/10">
                 <FiTarget className="w-5 h-5 text-green-400" />
               </div>

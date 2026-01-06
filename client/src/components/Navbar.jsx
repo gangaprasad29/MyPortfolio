@@ -25,10 +25,21 @@ const Navbar = () => {
 
   const handleNavClick = (id) => {
     setIsOpen(false);
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    
+    // Small delay to allow menu to close first
+    setTimeout(() => {
+      const element = document.getElementById(id);
+      if (element) {
+        const navbarHeight = 80; // Adjust based on your navbar height
+        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - navbarHeight;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 100);
   };
 
   return (
@@ -151,7 +162,7 @@ const Navbar = () => {
               initial="closed"
               animate="open"
               exit="closed"
-              className="md:hidden overflow-hidden"
+              className="md:hidden overflow-hidden bg-dark-900/95 backdrop-blur-lg rounded-b-2xl shadow-xl"
             >
               <div className="py-4 space-y-1 border-t border-dark-700/50">
                 {navItems.map((item, index) => (
