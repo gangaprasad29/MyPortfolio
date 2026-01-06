@@ -1,8 +1,52 @@
 import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
 import { FiDownload, FiArrowRight } from 'react-icons/fi';
 import { heroTextReveal, heroImageReveal, staggerContainer } from '../animations/variants';
 
 const Hero = () => {
+  const [currentText, setCurrentText] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  
+  const texts = [
+    "I'm a Full Stack Developer",
+    "I'm a Problem Solver",
+    "I'm a Web Developer"
+  ];
+  
+  useEffect(() => {
+    const typingSpeed = isDeleting ? 50 : 100;
+    const pauseDuration = 2000;
+    
+    const handleTyping = () => {
+      const currentFullText = texts[currentIndex];
+      
+      if (!isDeleting) {
+        // Typing forward
+        if (currentText.length < currentFullText.length) {
+          setCurrentText(currentFullText.substring(0, currentText.length + 1));
+        } else {
+          // Finished typing, wait then start deleting
+          setTimeout(() => setIsDeleting(true), pauseDuration);
+          return;
+        }
+      } else {
+        // Deleting backward
+        if (currentText.length > 0) {
+          setCurrentText(currentFullText.substring(0, currentText.length - 1));
+        } else {
+          // Finished deleting, move to next text
+          setIsDeleting(false);
+          setCurrentIndex((prev) => (prev + 1) % texts.length);
+          return;
+        }
+      }
+    };
+    
+    const timer = setTimeout(handleTyping, typingSpeed);
+    return () => clearTimeout(timer);
+  }, [currentText, currentIndex, isDeleting, texts]);
+
   const handleNavClick = (id) => {
     const element = document.getElementById(id);
     if (element) {
@@ -75,11 +119,12 @@ const Hero = () => {
             {/* Title */}
             <motion.h2
               variants={heroTextReveal}
-              className="text-xl sm:text-2xl md:text-3xl font-medium text-dark-300 mb-6"
+              className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 min-h-[2.5rem] sm:min-h-[3rem] flex items-center justify-center lg:justify-start"
             >
-              Full Stack Developer
-              <span className="text-primary-400"> & </span>
-              Software Engineer
+              <span className="bg-gradient-to-r from-primary-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                {currentText}
+                <span className="animate-blink text-cyan-400">|</span>
+              </span>
             </motion.h2>
 
             {/* Description */}
