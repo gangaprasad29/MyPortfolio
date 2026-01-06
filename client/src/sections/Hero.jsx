@@ -220,21 +220,6 @@ const Hero = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-dark-900/30 to-transparent" />
               </div>
 
-              {/* Floating elements */}
-              <motion.div
-                className="absolute -top-4 -right-4 w-20 h-20 bg-dark-800/80 backdrop-blur-sm rounded-2xl border border-dark-700 flex items-center justify-center"
-                animate={{
-                  y: [0, -10, 0],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-              >
-                <span className="text-3xl">🚀</span>
-              </motion.div>
-
               <motion.div
                 className="absolute -bottom-2 -left-4 w-16 h-16 bg-dark-800/80 backdrop-blur-sm rounded-2xl border border-dark-700 flex items-center justify-center"
                 animate={{
